@@ -1,9 +1,10 @@
 from machine import Pin  # type: ignore
 from time import sleep
-from modules import bfs
-from modules import move
 import network  # type: ignore
 import socket
+from modules import bfs
+from modules import move
+
 
 SSID = "Unimagdalena"
 PASSWORD = ""
@@ -59,17 +60,18 @@ def movement(delta, current):
 
 def run():
     connect(SSID, PASSWORD)
-    delta = bfs.find(START, END, MAZE)
-
-    try:
-        if delta:
+    delta = bfs.find(MAZE, START, END)
+    
+    if delta:
+        try:
             movement(delta, CURRENT)
-        else:
-            move.invalid()
-    except KeyboardInterrupt:
-        move.stop()
-    finally:
-        move.stop()
+        except KeyboardInterrupt:
+            move.stop()
+        finally:
+            move.stop()
+    else:
+        move.invalid()
+
 
 
 if __name__ == "__main__":

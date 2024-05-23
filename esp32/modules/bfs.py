@@ -49,5 +49,6 @@ def delta(path):
 
 
 def find(maze, start, end):
+    print(f"START: {start} | END:{end}")
     path = search(maze, start, end)
     return delta(path)
