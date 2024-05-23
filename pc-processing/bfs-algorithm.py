@@ -1,5 +1,11 @@
 from collections import deque
 
+# Algoritmo Breadth-first search
+## maze: Matriz nxm con valores de 0b0000 a 0b1111.
+
+## start: Indice de la posición inical del robot.
+## end: Indice de la posición de salida del laberinto.
+## path[]: Lista de tuplas de los indices del recorrido.
 
 def find_path(maze, start, end):
     rows = len(maze)
@@ -35,11 +41,28 @@ def find_path(maze, start, end):
     return None
 
 
-def route(path, start):
+def print_path(path, start, end):
+    if path:
+        print(f"Inicio: {start}")
+        print(f"Fin: {end}")
+        print("Ruta encontrada:")
+        for point in path:
+            print(point)
+    else:
+        print("No se encontró una ruta válida.")
+
+
+def movement_map(path):
+    current = 3
     print("Movimientos")
     for i in range(len(path) - 1):
         delta = tuple(a - b for a, b in zip(path[i], path[i + 1]))
-        print_direction(delta)
+        current = robot_turn(get_direction(delta), current)
+
+
+def get_direction(delta):
+    directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+    return directions.index(delta)
 
 
 def print_direction(delta):
@@ -51,15 +74,26 @@ def print_direction(delta):
         print("Movimiento no reconocido:", delta)
 
 
-def print_path(path, start, end):
-    if path:
-        print(f"Inicio: {start}")
-        print(f"Fin: {end}")
-        print("Ruta encontrada:")
-        for point in path:
-            print(point)
+def robot_turn(delta, current):
+    directions = [0, 1, 2, 3]  # Left, Right, Down, Up
+    right = [(0, 3), (1, 2), (2, 0), (3, 1)]
+    left = [(0, 2), (1, 3), (2, 1), (3, 0)]
+
+    if current == directions[delta]:
+        print("MOVE_CONTINUE")
+
+    elif (current, directions[delta]) in left:
+        print("TURN_LEFT")
+        current = directions[delta]
+
+    elif (current, directions[delta]) in right:
+        print("TURN_RIGHT")
+        current = directions[delta]
+
     else:
-        print("No se encontró una ruta válida.")
+        print("MOVE_TURN")
+
+    return current
 
 
 maze = [
@@ -77,7 +111,8 @@ def main():
     end = (0, 4)
 
     path = find_path(maze, start, end)
-    route(path, start)
+    print_path(path, start, end)
+    movement_map(path)
 
 
 if __name__ == "__main__":
