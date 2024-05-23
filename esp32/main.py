@@ -55,17 +55,18 @@ def robot_turn(delta, current):
 
     elif (current, delta) in left:
         print("TURN LEFT AND CONTINUE")
-        current = delta
         move.left()
+        current = delta
 
     elif (current, delta) in right:
         print("TURN RIGHT AND CONTINUE")
-        current = delta
         move.right()
+        current = delta
 
     else:
         print("TURN 180° AND CONTINUE")
         move.turn()
+        current = delta
 
     return current
 

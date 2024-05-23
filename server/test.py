@@ -1,5 +1,6 @@
 from bfs_algorithm import *
 
+
 def main():
     start = (3, 1)
     end = (0, 4)
@@ -11,4 +12,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
