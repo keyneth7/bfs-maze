@@ -1,11 +1,14 @@
 from collections import deque
 
 # Algoritmo Breadth-first search
+## Realiza una búsqueda en anchura para encontrar el camino más corto
 ## maze: Matriz nxm con valores de 0b0000 a 0b1111.
+##       Ubicación de las paredes:
+##       - Norte (0b0001) | Sur (0b0010)
+##       - Este (0b0100)  | Oeste (0b1000)
+## start: Índice de la posición inicial del robot.
+## end: Índice de la posición de salida del laberinto
 
-## start: Indice de la posición inical del robot.
-## end: Indice de la posición de salida del laberinto.
-## path[]: Lista de tuplas de los indices del recorrido.
 
 def find_path(maze, start, end):
     rows = len(maze)
@@ -52,43 +55,42 @@ def print_path(path, start, end):
         print("No se encontró una ruta válida.")
 
 
-def movement_map(path):
-    current = 3
-    print("Movimientos")
-    for i in range(len(path) - 1):
-        delta = tuple(a - b for a, b in zip(path[i], path[i + 1]))
-        current = robot_turn(get_direction(delta), current)
+# Mapeo de movimientos para el robot
+## Obtención de instrucciones que debe seguir el robot.
+## delta: [0: Left, 1: Right, 2: Down, 3: Up]
 
 
-def get_direction(delta):
+def robot_move(path):
     directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
-    return directions.index(delta)
+    current = 3
+
+    for i in range(len(path) - 1):
+        move = tuple(a - b for a, b in zip(path[i], path[i + 1]))
+        delta = directions.index(move)
+        current = robot_turn(delta, current)
 
 
-def print_direction(delta):
-    directions = {(0, 1): "Left", (0, -1): "Right", (-1, 0): "Down", (1, 0): "Up"}
-
-    if delta in directions:
-        print(directions[delta])
-    else:
-        print("Movimiento no reconocido:", delta)
+# Funciones para el movimiento del robot
+## MOVE_CONTINUE(): Avanza una posición en la dirección actual
+## TURN_LEFT(): Gira 90 grados hacia la izquierda y avanza una posición
+## TURN_RIGHT(): Gira 90 grados hacia la derecha y avanza una posición
+## MOVE_TURN(): Gira 180 grados o dos veces hacia la derecha y avanza una posición
 
 
 def robot_turn(delta, current):
-    directions = [0, 1, 2, 3]  # Left, Right, Down, Up
     right = [(0, 3), (1, 2), (2, 0), (3, 1)]
     left = [(0, 2), (1, 3), (2, 1), (3, 0)]
 
-    if current == directions[delta]:
+    if current == delta:
         print("MOVE_CONTINUE")
 
-    elif (current, directions[delta]) in left:
+    elif (current, delta) in left:
         print("TURN_LEFT")
-        current = directions[delta]
+        current = delta
 
-    elif (current, directions[delta]) in right:
+    elif (current, delta) in right:
         print("TURN_RIGHT")
-        current = directions[delta]
+        current = delta
 
     else:
         print("MOVE_TURN")
@@ -112,7 +114,7 @@ def main():
 
     path = find_path(maze, start, end)
     print_path(path, start, end)
-    movement_map(path)
+    robot_move(path)
 
 
 if __name__ == "__main__":
