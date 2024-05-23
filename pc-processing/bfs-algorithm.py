@@ -61,13 +61,16 @@ def print_path(path, start, end):
 
 
 def robot_move(path):
-    directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
-    current = 3
+    if path:
+        directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+        current = 3
 
-    for i in range(len(path) - 1):
-        move = tuple(a - b for a, b in zip(path[i], path[i + 1]))
-        delta = directions.index(move)
-        current = robot_turn(delta, current)
+        for i in range(len(path) - 1):
+            move = tuple(a - b for a, b in zip(path[i], path[i + 1]))
+            delta = directions.index(move)
+            current = robot_turn(delta, current)
+    else:
+        print("No se encontró una ruta válida.")
 
 
 # Funciones para el movimiento del robot
@@ -109,7 +112,7 @@ maze = [
 
 
 def main():
-    start = (5, 4)
+    start = (5, 2)
     end = (0, 4)
 
     path = find_path(maze, start, end)
