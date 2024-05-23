@@ -112,7 +112,7 @@ maze = [
 
 
 def main():
-    start = (5, 2)
+    start = (3, 1)
     end = (0, 4)
 
     path = find_path(maze, start, end)
