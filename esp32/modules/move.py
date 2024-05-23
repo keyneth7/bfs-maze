@@ -33,3 +33,7 @@ def left():
 def right():
     left_servo.duty(100)
     right_servo.duty(40)
+    
+
+def invalid():
+    print('No hay futuro.')

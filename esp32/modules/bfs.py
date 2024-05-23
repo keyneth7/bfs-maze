@@ -1,7 +1,7 @@
 from collections import deque
 
 
-def find_path(maze, start, end):
+def search(maze, start, end):
     rows = len(maze)
     cols = len(maze[0])
     visited = [[False] * cols for _ in range(rows)]
@@ -35,12 +35,19 @@ def find_path(maze, start, end):
     return None
 
 
-def print_path(path, start, end):
+def delta(path):
+    DIRECTIONS = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+    move = []
+
     if path:
-        print(f"Inicio: {start}")
-        print(f"Fin: {end}")
-        print("Ruta encontrada:")
-        for point in path:
-            print(point)
-    else:
-        print("No se encontró una ruta válida.")
+        for i in range(len(path) - 1):
+            direction = tuple(a - b for a, b in zip(path[i], path[i + 1]))
+            delta = DIRECTIONS.index(direction)
+            move.append(delta)
+
+    return move
+
+
+def find(maze, start, end):
+    path = search(maze, start, end)
+    return delta(path)
