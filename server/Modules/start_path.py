@@ -10,7 +10,7 @@ def send_data(url, start, end, compass):
     return response.status_code, response.text
 
 if __name__ == "__main__":
-    url = "http://192.168.10.17:80"
+    url = "http://192.168.0.33:80"
     start = (0, 0)
     end = (0, 4)
     compass = 3
