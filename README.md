@@ -17,7 +17,7 @@ En este proyecto, se ha adaptado el algoritmo BFS para operar con una matriz que
 
 Existen entonces 16 posibles combinaciones a las que se enfrenta el robot en cada posición. De esta forma, un laberinto que luce de esta manera:
 
-[![maze.png](https://i.postimg.cc/mD4TYq8j/maze.png)](https://postimg.cc/Mcskxskf)
+<img src="https://i.postimg.cc/mD4TYq8j/maze.png" width="500">
 
 Se interpreta como una matriz de números de cuatro bits:
 
