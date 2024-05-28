@@ -1,0 +1,54 @@
+@startuml
+!theme plain
+skinparam defaultTextAlignment center
+
+!$ICONURL = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons"
+!include $ICONURL/common.puml
+!include $ICONURL/font-awesome/camera.puml
+!include $ICONURL/font-awesome/gear.puml
+
+package "Client" {
+  [app_gui]
+  [path_maze]
+  [bfs_path]
+  [start_vision]
+  [start_path]
+  FA_CAMERA(webcam, Webcam)
+  () "data"
+  json JSON {
+     "START":"tuple",
+     "END": "tuple",
+     "DIR": "int"
+}
+}
+
+data -left-> JSON 
+[app_gui] <.right. [path_maze] : IMG
+[path_maze] <.right. [bfs_path] : PATH
+[bfs_path] <.down. [start_vision] : START
+[start_path] <.right. [start_vision] : START
+[app_gui] <.down. [start_path]
+[start_vision] -down- webcam
+[start_path] -down-> data : HTTP
+
+
+package "esp32" {
+  [main]
+  [start_server]
+  [handle_request]
+  [robot_move]
+  [bfs_delta]
+  [move]
+  FA_GEAR(servo, Servo)
+}
+
+data -down-> [handle_request] : JSON
+[main] <-left- [start_server]
+[handle_request] -right-> [start_server]
+[handle_request] <-down- [robot_move]
+[robot_move] -right- [move]
+[handle_request] <-left-> [bfs_delta]
+servo -left- [move]
+
+
+@enduml

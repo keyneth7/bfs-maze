@@ -5,7 +5,7 @@ def search(maze, start, end):
     rows = len(maze)
     cols = len(maze[0])
     visited = [[False] * cols for _ in range(rows)]
-    queue = deque((),100)
+    queue = deque((), 100)
     queue.append(start)
     parent = {}
 
@@ -35,6 +35,7 @@ def search(maze, start, end):
                     parent[(new_row, new_col)] = current
     return None
 
+
 def print_path(path, start, end):
     if path:
         print(f"Inicio: {start}")
@@ -44,6 +45,7 @@ def print_path(path, start, end):
             print(point)
     else:
         print("No se encontró una ruta válida.")
+
 
 def delta(path):
     DIRECTIONS = [(0, 1), (0, -1), (-1, 0), (1, 0)]
