@@ -36,6 +36,7 @@ maze = [
 - [esptool](https://github.com/espressif/esptool)
 - [Micropython firmware ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/)
 - [opencv-python](https://pypi.org/project/opencv-python/)
+- Ver [requirements.txt](https://github.com/queined/bfs-maze-bot/blob/main/requirements.txt)
 ### Materiales
 - ESP32-WROOM
 - Servo sg90
