@@ -43,12 +43,12 @@ package "esp32" {
 }
 
 data -down-> [handle_request] : JSON
-[main] <-left- [start_server]
-[handle_request] -right-> [start_server]
-[handle_request] <-down- [robot_move]
-[robot_move] -right- [move]
-[handle_request] <-left-> [bfs_delta]
-servo -left- [move]
+[main] <.left- [start_server]
+[handle_request] .right.> [start_server]
+[handle_request] <.down. [robot_move]
+[robot_move] .right. [move]
+[handle_request] <.left.> [bfs_delta]
+servo .left. [move]
 
 
 @enduml
