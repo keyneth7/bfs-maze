@@ -32,10 +32,14 @@ maze = [
 
 ## ⚙ Configuración y uso
 ### Prerrequisitos
-- Python 3.x
+- [Python 3.x](https://www.python.org/downloads/)
+- [esptool](https://github.com/espressif/esptool)
+- [Micropython firmware ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/)
+- [opencv-python](https://pypi.org/project/opencv-python/)
 ### Materiales
-
-## ✨ En acción
+- ESP32-WROOM
+- Servo sg90
+- Webcam HD
 
 ## ⚖️ Licencia
 Este proyecto tiene la licencia MIT; consulte el archivo de [LICENSE](https://github.com/queined/bfs-maze-bot/blob/main/LICENSE) para obtener más detalles.
