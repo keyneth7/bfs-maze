@@ -1,5 +1,5 @@
 # bfs-maze-bot
-Modelo de un robot autónomo capaz de resolver laberintos utilizando una tarjeta esp32 como unidad de control principal. El robot combina el uso del algoritmo de Búsqueda en Anchura (BFS) con técnicas de visión artificial para mapear y navegar a través del laberinto de manera eficiente.
+Modelo de un robot autónomo capaz de resolver laberintos utilizando una tarjeta ESP32 como unidad de control principal. El robot combina el uso del algoritmo de Búsqueda en Anchura (BFS) con técnicas de visión artificial para mapear y navegar a través del laberinto de manera eficiente.
 
 ## 🤖 Arquitectura y caracteristicas
 El sistema se divide en dos secciones principales: el cliente y la ESP32 (servidor/robot). La implementación del software está basada en Python y Micropython.
@@ -9,7 +9,7 @@ El sistema se divide en dos secciones principales: el cliente y la ESP32 (servid
 </p>
 
 
-El modelo posee una interfaz de usuario que permite a los usuarios interactuar con el robot. Se encarga de enviar comandos y recibir datos del servidor ESP32. La ESP32 actúa como el servidor y el controlador principal del robot. Gestiona la recepción de comandos del cliente, controla los motores y realiza la navegación en el laberinto.
+El modelo posee una interfaz de usuario que permite a interactuar con el robot. Se encarga de enviar comandos y recibir datos del servidor ESP32. La ESP32 actúa como el servidor y el controlador principal del robot. Gestiona la recepción de comandos del cliente, controla los motores y realiza la navegación en el laberinto.
 
 ## 🚩 Algoritmo y laberinto
 
@@ -33,14 +33,26 @@ maze = [
 ## ⚙ Configuración y uso
 ### Prerrequisitos
 - [Python 3.x](https://www.python.org/downloads/)
-- [esptool](https://github.com/espressif/esptool)
 - [Micropython firmware ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/)
-- [opencv-python](https://pypi.org/project/opencv-python/)
 - Ver [requirements.txt](https://github.com/queined/bfs-maze-bot/blob/main/requirements.txt)
 ### Materiales
 - ESP32-WROOM
 - Servo sg90
 - Webcam HD
+  
+### ⚙ Configuración del cliente
+1. Instalar librerías.
+    ```python
+    pip install -r requirements.txt
+    ```
+### ⚙ Configuración de la ESP32
+1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM.
+    ```bash
+    esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+    esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 esp32-20190125-v1.10.bin
+    ```
+2. Cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta. Puedes usar [Thonny](https://thonny.org/) o el IDE de tu preferencia para cargar los arhivos
+ Recuerda antes modificar el `SSID` y el `PASSWORD` de la red en [main.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/main.py). Si definiste un nuevo laberineto deberás insertarlo en `MAZE`. 
 
 ## ⚖️ Licencia
 Este proyecto tiene la licencia MIT; consulte el archivo de [LICENSE](https://github.com/queined/bfs-maze-bot/blob/main/LICENSE) para obtener más detalles.
