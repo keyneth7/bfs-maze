@@ -34,14 +34,14 @@ maze = [
 ### Prerrequisitos
 - [Python 3.x](https://www.python.org/downloads/)
 - [Micropython firmware ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/)
-- Ver [requirements.txt](https://github.com/queined/bfs-maze-bot/blob/main/requirements.txt)
+- Micropython IDE ([Thonny IDE](https://thonny.org), [Mu Editor](https://codewith.mu), [VS Code Pymakr](https://randomnerdtutorials.com/micropython-esp32-esp8266-vs-code-pymakr/))
 ### Materiales
 - ESP32-WROOM
 - Servo sg90
 - Webcam HD
   
 ### ⚙ Configuración del cliente
-1. Instalar librerías.
+1. Instalar librerías [requirements.txt](https://github.com/queined/bfs-maze-bot/blob/main/requirements.txt).
     ```python
     pip install -r requirements.txt
     ```
@@ -51,8 +51,7 @@ maze = [
     esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
     esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 esp32-20190125-v1.10.bin
     ```
-2. Cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta. Puedes usar [Thonny](https://thonny.org/) o el IDE de tu preferencia para cargar los arhivos
- Recuerda antes modificar el `SSID` y el `PASSWORD` de la red en [main.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/main.py). Si definiste un nuevo laberineto deberás insertarlo en `MAZE`. 
+2. Modificar el `SSID` y el `PASSWORD` de la red en [main.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/main.py). Si definiste un nuevo laberineto deberás insertarlo en `MAZE`. Cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta. 
 
 ## ⚖️ Licencia
 Este proyecto tiene la licencia MIT; consulte el archivo de [LICENSE](https://github.com/queined/bfs-maze-bot/blob/main/LICENSE) para obtener más detalles.
