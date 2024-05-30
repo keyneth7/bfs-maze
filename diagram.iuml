@@ -18,7 +18,7 @@ package "Client" {
   json JSON {
      "START":"tuple",
      "END": "tuple",
-     "DIR": "int"
+     "COMPASS": "int"
 }
 }
 
