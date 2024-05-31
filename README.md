@@ -1,34 +1,23 @@
 # bfs-maze-bot
 Modelo de un robot autónomo capaz de resolver laberintos utilizando una tarjeta ESP32 como unidad de control principal. El robot combina el uso del algoritmo de Búsqueda en Anchura (BFS) con técnicas de visión artificial para mapear y navegar a través del laberinto de manera eficiente.
 
-## Tabla de Contenidos
+<p align="center">
+  <a href="#presentación">Presentación</a> ·
+  <a href="#implementación">Implementación</a> ·
+  <a href="#funcionamiento">Funcionamiento</a>
+</p>
 
-- [bfs-maze-bot](#bfs-maze-bot)
-  - [Tabla de Contenidos](#tabla-de-contenidos)
-- [Introducción](#introducción)
-  - [Arquitectura y caracteristicas](#arquitectura-y-caracteristicas)
-  - [Algoritmo y laberinto](#algoritmo-y-laberinto)
-- [Implementación](#implementación)
-  - [Configuración de software](#configuración-de-software)
-    - [Prerrequisitos](#prerrequisitos)
-    - [Configuración del cliente](#configuración-del-cliente)
-    - [Configuración de la ESP32](#configuración-de-la-esp32)
-  - [Configuración de hardware](#configuración-de-hardware)
-    - [Materiales](#materiales)
-- [Funcionamiento](#funcionamiento)
-- [Licencia](#licencia)
-
-# Introducción
-## Arquitectura y caracteristicas
+# Presentación
+## 🤖 Arquitectura y caracteristicas
 El sistema se divide en dos secciones principales: el cliente y la ESP32 (servidor/robot). La implementación del software está basada en Python y Micropython.
 
 <p align="center">
     <img src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/queined/bfs-maze-bot/main/diagram.iuml" width="450">
 </p>
 
-El modelo cuenta con una interfaz de usuario que facilita la interacción con el robot. Esta interfaz se encarga de enviar comandos y recibir datos del servidor ESP32. La ESP32 actúa como servidor y controlador principal del robot, gestionando la recepción de comandos del cliente, controlando los motores y ejecutando la navegación en el laberinto.
+El modelo cuenta con una interfaz de usuario que facilita la interacción con el robot. Esta interfaz se encarga de enviar comandos y recibir datos del servidor ESP32. La ESP32 actúa como servidor y controlador principal del robot, gestionando la recepción de comandos del cliente, controlando los servos y ejecutando la navegación en el laberinto.
 
-## Algoritmo y laberinto
+## 🚩 Algoritmo y laberinto
 
 <p align="center">
     <img src="https://i.postimg.cc/mD4TYq8j/maze.png" width="350">
@@ -47,13 +36,13 @@ maze = [
 ]
 ```
 # Implementación
-## Configuración de software
+## 💻 Configuración de software
 ###  Prerrequisitos
 - [Python 3.x](https://www.python.org/downloads/)
 - Micropython IDE ([Thonny IDE](https://thonny.org), [Mu Editor](https://codewith.mu), [VS Code Pymakr](https://randomnerdtutorials.com/micropython-esp32-esp8266-vs-code-pymakr/))
 - Micropython firmware ([ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/))
   
-### Configuración del cliente
+### Setup del cliente
 1. Clonar el respositorio.
     ```bash
     $ git clone https://github.com/queined/bfs-maze-bot
@@ -62,7 +51,7 @@ maze = [
     ```python
     $ pip install -r requirements.txt
     ```
-### Configuración de la ESP32
+### Setup de la ESP32
 
 1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM.
     ```bash
@@ -72,7 +61,7 @@ maze = [
 2. Modificar el `SSID` y el `PASSWORD` de la red en [main.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/main.py). Si se define un nuevo laberinto se debe insertar en `MAZE`. Luego, cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
 
 
-## Configuración de hardware
+## ⚙ Configuración de hardware
 ### Materiales
 - ESP32-WROOM
 - Microservo SG90
@@ -81,6 +70,8 @@ maze = [
 - Ruedas de 65mm
 - Protoboard o baquela
 
+### Montaje
+Coming soon...
 # Funcionamiento
 Work in progress...
 
