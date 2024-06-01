@@ -41,6 +41,7 @@ maze = [
 - [Python 3.x](https://www.python.org/downloads/)
 - Micropython IDE ([Thonny IDE](https://thonny.org), [Mu Editor](https://codewith.mu), [VS Code Pymakr](https://randomnerdtutorials.com/micropython-esp32-esp8266-vs-code-pymakr/))
 - Micropython firmware ([ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/))
+- [esptool.py](https://pypi.org/project/esptool/)
   
 ### Setup del cliente
 1. Clonar el respositorio.
@@ -51,9 +52,10 @@ maze = [
     ```python
     $ pip install -r requirements.txt
     ```
+3. Configurar las rutas locales donde se almacenarán las imagenes en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/client/Modules/globals.py).
 ### Setup de la ESP32
 
-1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM.
+1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM. Remplaza COMx por el puerto al que esta conectada la ESP32.
     ```bash
     $ python -m esptool --chip esp32 --port COMx --baud 460800 erase_flash
     $ python -m esptool --chip esp32 --port COMx --baud 460800 write_flash -z 0x1000 ESP32_GENERIC-20240222-v1.22.2.bin
