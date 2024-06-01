@@ -34,18 +34,20 @@ def find_robot(matrix, rows, cols):
     img_array = np.array(img_resized)
     min_val = np.min(img_array)
     position = np.argwhere(img_array == min_val)[0]
-    return tuple(position)
+    return tuple([int(p) for p in position])
 
 
-def get_start(rows, cols):
+def get_start():
     get_image()
-    img = cv2.imread(globals.resize)
-
+    rows = len(globals.maze)
+    cols = len(globals.maze[0])
+    img = cv2.imread(globals.imgresize)
+    
     matrix = image_processing(img, rows, cols)
     coordinates = find_robot(matrix, rows, cols)
 
     print("START:", coordinates)
     cv2.imshow("Matrix", matrix)
-    cv2.imwrite(globals.matrix, matrix)
+    cv2.imwrite(globals.imgmatrix, matrix)
     cv2.waitKey(0)
     return coordinates

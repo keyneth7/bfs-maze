@@ -4,19 +4,8 @@ import network  # type: ignore
 import socket
 from modules import bfs
 from modules import move
+from modules import globals
 import ujson  # type: ignore
-
-SSID = "Unimagdalena"
-PASSWORD = ""
-COMPASS = 3
-MAZE = [
-    [0b1001, 0b0001, 0b0011, 0b0111, 0b1100, 0b1001, 0b0011, 0b0101],
-    [0b1100, 0b1100, 0b1001, 0b0001, 0b0110, 0b1000, 0b0111, 0b1100],
-    [0b1100, 0b1010, 0b0100, 0b1010, 0b0011, 0b0100, 0b1011, 0b0100],
-    [0b1000, 0b0111, 0b1000, 0b0011, 0b0101, 0b1000, 0b0101, 0b1100],
-    [0b1100, 0b1011, 0b0100, 0b1001, 0b0010, 0b0110, 0b1100, 0b1100],
-    [0b1010, 0b0111, 0b1110, 0b1110, 0b1011, 0b0011, 0b0010, 0b0110],
-]
 
 
 def connect(SSID, PASSWORD):
@@ -81,7 +70,7 @@ def handle_request(client_sock):
             end = tuple(data["data"]["END"])
             compass = int(data["data"]["COMPASS"])
 
-            delta = bfs.find(MAZE, start, end)
+            delta = bfs.find(globals.MAZE, start, end)
             response = {"status": "success", "delta": delta}
             robot_move(delta, compass)
         else:
@@ -113,7 +102,7 @@ def start_server():
 
 
 def run():
-    connect(SSID, PASSWORD)
+    connect(globals.SSID, globals.PASSWORD)
     start_server()
 
 

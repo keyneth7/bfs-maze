@@ -37,7 +37,5 @@ def bfs_algorithm(maze, start, end):
 
 
 def find(maze, end):
-    rows = len(maze)
-    cols = len(maze[0])
-    start = get_start(rows, cols)
+    start = get_start()
     return bfs_algorithm(maze, start, end)

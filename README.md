@@ -52,7 +52,7 @@ maze = [
     ```python
     $ pip install -r requirements.txt
     ```
-3. Configurar las rutas locales donde se almacenarán las imagenes en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/client/Modules/globals.py).
+3. Configurar las rutas locales donde se almacenarán las imagenes y la matriz de binarios que representa el laberinto en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/client/Modules/globals.py).
 ### Setup de la ESP32
 
 1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM. Remplaza COMx por el puerto al que esta conectada la ESP32.
@@ -60,7 +60,7 @@ maze = [
     $ python -m esptool --chip esp32 --port COMx --baud 460800 erase_flash
     $ python -m esptool --chip esp32 --port COMx --baud 460800 write_flash -z 0x1000 ESP32_GENERIC-20240222-v1.22.2.bin
     ```
-2. Modificar el `SSID` y el `PASSWORD` de la red en [main.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/main.py). Si se define un nuevo laberinto se debe insertar en `MAZE`. Luego, cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
+2. Modificar el `SSID` y el `PASSWORD` de la red en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/modules/globals.py). Si se define un nuevo laberinto se debe modificar `MAZE`. Luego, cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
 
 
 ## ⚙ Configuración de hardware

@@ -1,4 +1,6 @@
 import requests
+import globals
+from get_start import get_start
 
 
 def send_data(url, start, end, compass):
@@ -9,7 +11,7 @@ def send_data(url, start, end, compass):
 
 if __name__ == "__main__":
     url = "http://192.168.10.12:80"
-    start = (0, 0)
+    start = get_start()
     end = (0, 4)
     compass = 3
 

@@ -3,7 +3,7 @@ import numpy as np
 import globals
 
 points = []
-img = cv2.imread(globals.maze)
+img = cv2.imread(globals.imgmaze)
 
 
 def get_points(event, x, y, flags, param):
@@ -11,7 +11,6 @@ def get_points(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         cv2.circle(img, (x, y), 4, (255, 0, 0), -1)
         points.append([x, y])
-        print(points)
         cv2.imshow("Maze", img)
         if len(points) >= 4:
             get_perspective()
@@ -26,7 +25,7 @@ def get_perspective():
     imgOutput = cv2.warpPerspective(img, matrix, (width, height))
     cv2.imshow("Resize", imgOutput)
     cv2.waitKey(2000)
-    cv2.imwrite(globals.resize, imgOutput)
+    cv2.imwrite(globals.imgresize, imgOutput)
 
 
 def get_image():

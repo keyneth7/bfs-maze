@@ -7,6 +7,8 @@ skinparam defaultTextAlignment center
 !include $ICONURL/font-awesome/camera.puml
 !include $ICONURL/font-awesome/gear.puml
 
+
+
 package "Client" {
   [app_gui]
   [path_maze]
@@ -14,24 +16,24 @@ package "Client" {
   [get_start] 
   [start_path]
   [get_image]
-  FA_CAMERA(webcam, Webcam)
-  () "data"
-  json JSON {
+  FA_CAMERA(webcam, Webcam, card, #2196f3) #white;line:2196f3;text:2196f3
+  () "HTTP" #white;line:black
+  json data {
      "START":"tuple",
      "END": "tuple",
      "COMPASS": "int"
-}
+  } 
 }
 
-data -left-> JSON 
+HTTP .left.> data
 [app_gui] <.right. [path_maze] : IMG
 [path_maze] <.right. [bfs_path] : PATH
 [bfs_path] <.down. [get_start] : START
 [start_path] <.right. [get_start] : START
 [app_gui] <.down. [start_path]
-[get_start] .down. [get_image] :IMG
-[get_image] -left-> webcam
-[start_path] -down-> data : HTTP
+[get_start] <.down. [get_image] :IMG
+[get_image] <.left[#2196f3]. webcam
+[start_path] -[dotted,thickness=5]- HTTP
 
 
 package "esp32" {
@@ -41,16 +43,16 @@ package "esp32" {
   [robot_move]
   [bfs_delta]
   [move]
-  FA_GEAR(servo, Servo)
+  FA_GEAR(servo, Servo, card, #2196f3) #white;line:2196f3;text:2196f3
 }
 
-data -down-> [handle_request] : JSON
+HTTP -[Dotted,thickness=5]- [handle_request]
 [main] <.left- [start_server]
 [handle_request] .right.> [start_server]
 [handle_request] <.down. [robot_move]
-[robot_move] .right. [move]
-[handle_request] <.left.> [bfs_delta]
-servo -left- [move]
+[robot_move] .right.> [move]
+[handle_request] <.left. [bfs_delta]
+servo <.left[#2196f3]. [move]
 
 
 @enduml
