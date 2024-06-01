@@ -55,8 +55,8 @@ maze = [
 
 1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM.
     ```bash
-    $ esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
-    $ esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 esp32-20190125-v1.10.bin
+    $ python -m esptool --chip esp32 --port COMx --baud 460800 erase_flash
+    $ python -m esptool --chip esp32 --port COMx --baud 460800 write_flash -z 0x1000 ESP32_GENERIC-20240222-v1.22.2.bin
     ```
 2. Modificar el `SSID` y el `PASSWORD` de la red en [main.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/main.py). Si se define un nuevo laberinto se debe insertar en `MAZE`. Luego, cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
 
