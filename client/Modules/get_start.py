@@ -1,14 +1,14 @@
 import cv2
 import numpy as np
-import globals
-from get_image import get_image
+from Modules.get_image import get_image
+from Modules import globals
 
 
 def image_processing(img, rows, cols):
     img_draw = draw_grid(img, rows, cols)
     img_gray = cv2.cvtColor(img_draw, cv2.COLOR_BGR2GRAY)
     _, img = cv2.threshold(img_gray, 50, 255, cv2.THRESH_BINARY)
-    img = cv2.GaussianBlur(img, (5, 5), 0)
+    img = cv2.GaussianBlur(img, (3, 3), 0)
     return img
 
 
@@ -38,16 +38,18 @@ def find_robot(matrix, rows, cols):
 
 
 def get_start():
-    get_image()
-    rows = len(globals.maze)
-    cols = len(globals.maze[0])
-    img = cv2.imread(globals.imgresize)
-    
-    matrix = image_processing(img, rows, cols)
-    coordinates = find_robot(matrix, rows, cols)
+    try:
+        get_image()
+        rows = len(globals.maze)
+        cols = len(globals.maze[0])
+        img = cv2.imread(globals.imgresize)
 
-    print("START:", coordinates)
-    cv2.imshow("Matrix", matrix)
-    cv2.imwrite(globals.imgmatrix, matrix)
-    cv2.waitKey(0)
-    return coordinates
+        matrix = image_processing(img, rows, cols)
+        globals.start = find_robot(matrix, rows, cols)
+        matrixres = cv2.resize(matrix, (300, 200))
+        cv2.imwrite(globals.imgmatrix, matrixres)
+    
+    except Exception as e:
+        print(f"Error en get_start: {e}")
+        exit()
+        return None

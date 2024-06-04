@@ -1,8 +1,8 @@
 from collections import deque
-from get_start import get_start
+from Modules.get_start import get_start
 
 
-def bfs_algorithm(maze, start, end):
+def bfs_path(maze, start, end):
     rows = len(maze)
     cols = len(maze[0])
     visited = [[False] * cols for _ in range(rows)]
@@ -20,7 +20,7 @@ def bfs_algorithm(maze, start, end):
             return path[::-1]
 
         row, col = current
-        directions = [(0, -1), (0, 1), (1, 0), (-1, 0)]  # Left, Right, Down, Up
+        directions = [(0, -1), (0, 1), (1, 0), (-1, 0)]
 
         for dr, dc in directions:
             new_row, new_col = row + dr, col + dc
@@ -34,8 +34,3 @@ def bfs_algorithm(maze, start, end):
                     visited[new_row][new_col] = True
                     parent[(new_row, new_col)] = current
     return None
-
-
-def find(maze, end):
-    start = get_start()
-    return bfs_algorithm(maze, start, end)
