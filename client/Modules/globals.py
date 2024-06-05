@@ -1,5 +1,5 @@
-start = (0,0)
-end = (0,4)
+start = (0, 0)
+end = (0, 4)
 compass = 3
 
 maze = [
@@ -12,9 +12,4 @@ maze = [
 ]
 
 camera = "http://192.168.10.22:4747/video"
-
-imgmaze = "client\Modules\img\imgmatrix.jpg"
-imgresize = "client\Modules\img\imgresize.jpg"
-imgmatrix = "client\Modules\img\imgmatrix.jpg"
-imgpath = "client\Modules\img\imgpath.jpg"
-
+esp32_IP = "http://192.168.10.12:80"

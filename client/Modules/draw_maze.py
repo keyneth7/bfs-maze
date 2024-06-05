@@ -5,9 +5,9 @@ import cv2
 
 
 def draw_maze():
-    get_start()
+    img = get_start()
+    img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
     pathlist = bfs_path(globals.maze, globals.start, globals.end)
-    img = cv2.imread(globals.imgmatrix)
     rows = len(globals.maze)
     cols = len(globals.maze[0])
 
@@ -15,10 +15,16 @@ def draw_maze():
     dy, dx = h / rows, w / cols
     path_color = (255, 0, 0)
     thickness = 2
-    
+
     for i in range(len(pathlist) - 1):
-        start_point = (int(pathlist[i][1] * dx + dx / 2), int(pathlist[i][0] * dy + dy / 2))
-        end_point = (int(pathlist[i + 1][1] * dx + dx / 2), int(pathlist[i + 1][0] * dy + dy / 2))
+        start_point = (
+            int(pathlist[i][1] * dx + dx / 2),
+            int(pathlist[i][0] * dy + dy / 2),
+        )
+        end_point = (
+            int(pathlist[i + 1][1] * dx + dx / 2),
+            int(pathlist[i + 1][0] * dy + dy / 2),
+        )
         cv2.line(img, start_point, end_point, path_color, thickness)
-    
-    cv2.imwrite(globals.imgpath, img)
+
+    return img

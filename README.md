@@ -39,7 +39,7 @@ maze = [
 ## 💻 Configuración de software
 ###  Prerrequisitos
 - [Python 3.x](https://www.python.org/downloads/)
-- Micropython IDE ([Thonny IDE](https://thonny.org), [Mu Editor](https://codewith.mu), [VS Code Pymakr](https://randomnerdtutorials.com/micropython-esp32-esp8266-vs-code-pymakr/))
+- Micropython IDE ([Thonny IDE](https://thonny.org), [Mu Editor](https://codewith.mu))
 - Micropython firmware ([ESP32/WROOM](https://micropython.org/download/ESP32_GENERIC/))
 - [esptool.py](https://pypi.org/project/esptool/)
   
@@ -48,11 +48,12 @@ maze = [
     ```bash
     $ git clone https://github.com/queined/bfs-maze-bot
     ```
-2. Instalar paquetes desde [requirements.txt](https://github.com/queined/bfs-maze-bot/blob/main/requirements.txt).
+2. Descargar [bfs-robot-v1.0.exe](https://drive.google.com/file/d/12i-oOMuXa5v5DpDR695XDnbXxDeKe0Vz/view?usp=sharing). Si se desea ejecutar desde el código fuente, instalar paquetes desde [requirements.txt](https://github.com/queined/bfs-maze-bot/blob/main/requirements.txt) y ejecutar [app.py](https://github.com/queined/bfs-maze-bot/blob/main/client/app.py).
     ```python
     $ pip install -r requirements.txt
+    $ python app.py
     ```
-3. Configurar las rutas locales donde se almacenarán las imagenes y la matriz de binarios que representa el laberinto en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/client/Modules/globals.py).
+
 ### Setup de la ESP32
 
 1. Instalar el [firmware](https://micropython.org/download/ESP32_GENERIC/) de Micropython para la ESP32/WROOM. Remplaza COMx por el puerto al que esta conectada la ESP32.
@@ -60,20 +61,21 @@ maze = [
     $ python -m esptool --chip esp32 --port COMx --baud 460800 erase_flash
     $ python -m esptool --chip esp32 --port COMx --baud 460800 write_flash -z 0x1000 ESP32_GENERIC-20240222-v1.22.2.bin
     ```
-2. Modificar el `SSID` y el `PASSWORD` de la red en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/modules/globals.py). Si se define un nuevo laberinto se debe modificar `MAZE`. Luego, cargar los archivos de [/esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
+2. Modificar el `SSID` y el `PASSWORD` de la red en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/modules/globals.py). Si se define un nuevo laberinto se debe modificar `MAZE`. Luego, cargar los archivos de [esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
 
 
 ## ⚙ Configuración de hardware
 ### Materiales
 - ESP32-WROOM
 - Microservo SG90
-- Webcam HD
+- [DroidCam](https://www.dev47apps.com/) o Webcam HD
 - Corte en acrilíco o MDF ([robot.pdf](https://drive.google.com/file/d/1Ww6aeQt7NfRK-QJ9MhmAraJnbKTxphb9/view?usp=drive_link))
 - Ruedas de 65mm
 - Protoboard o baquela
 
 ### Montaje
 Coming soon...
+
 # Funcionamiento
 Work in progress...
 

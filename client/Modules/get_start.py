@@ -39,16 +39,15 @@ def find_robot(matrix, rows, cols):
 
 def get_start():
     try:
-        get_image()
+        img = get_image()
         rows = len(globals.maze)
         cols = len(globals.maze[0])
-        img = cv2.imread(globals.imgresize)
 
         matrix = image_processing(img, rows, cols)
         globals.start = find_robot(matrix, rows, cols)
-        matrixres = cv2.resize(matrix, (300, 200))
-        cv2.imwrite(globals.imgmatrix, matrixres)
-    
+        imgMatrix = cv2.resize(matrix, (300, 200))
+        return imgMatrix
+
     except Exception as e:
         print(f"Error en get_start: {e}")
         exit()

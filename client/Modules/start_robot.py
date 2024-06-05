@@ -10,10 +10,10 @@ def send_data(url, start, end, compass):
 
 
 def start_robot():
-    url = "http://192.168.10.12:80"
+    url = globals.esp32_IP
     start = globals.start
-    end = (0, 4)
-    compass = 3
+    end = globals.end
+    compass = globals.compass
 
     status_code, response_text = send_data(url, start, end, compass)
     print(f"Status Code: {status_code}")

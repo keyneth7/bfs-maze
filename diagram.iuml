@@ -8,7 +8,6 @@ skinparam defaultTextAlignment center
 !include $ICONURL/font-awesome/gear.puml
 
 
-
 package "Client" {
   [app_gui]
   [draw_path]

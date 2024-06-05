@@ -90,3 +90,4 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.exe
