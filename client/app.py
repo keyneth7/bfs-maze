@@ -87,7 +87,8 @@ class GUI(tk.Tk):
         esp32_IP_text = self.esp32_IP_entry.get()
         camera_text = self.camera_entry.get()
         if camera_text.strip() != "":
-            globals.camera = str(camera_text)
+            globals.camera = "http://" + str(camera_text) + "/video"
+            print(globals.camera)
             img = draw_maze()
             self.show_image(img)
             self.start_value_label.config(
@@ -97,7 +98,8 @@ class GUI(tk.Tk):
     def start_robot(self):
         esp32_IP_text = self.esp32_IP_entry.get()
         if esp32_IP_text.strip() != "":
-            globals.esp32_IP = str(esp32_IP_text)
+            globals.esp32_IP = "http://" + str(esp32_IP_text)
+            print(globals.esp32_IP)
             start_robot()
 
     def save_globals(self):
@@ -107,9 +109,9 @@ class GUI(tk.Tk):
         end_text = self.end_entry.get()
 
         if esp32_IP_text.strip() != "":
-            globals.esp32_IP = str(esp32_IP_text)
+            globals.esp32_IP = "http://" + str(esp32_IP_text)
         if camera_text.strip() != "":
-            globals.camera = str(camera_text)
+            globals.camera = "http://" + str(camera_text) + "/video"
         if maze_text.strip() != "":
             globals.maze = ast.literal_eval(maze_text)
         if end_text.strip() != "":

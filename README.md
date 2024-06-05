@@ -62,7 +62,7 @@ maze = [
     $ python -m esptool --chip esp32 --port COMx --baud 460800 write_flash -z 0x1000 ESP32_GENERIC-20240222-v1.22.2.bin
     ```
 2. Modificar el `SSID` y el `PASSWORD` de la red en [globals.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/modules/globals.py). Si se define un nuevo laberinto se debe modificar `MAZE`. Luego, cargar los archivos de [esp32](https://github.com/queined/bfs-maze-bot/tree/main/esp32) a la tarjeta.
-
+3. El laberinto físico del ejemplo tiene dimensiones de 2x1.5 metros, y los servomotores están ajustados para desplazarse una casilla siguiendo estas unidades de medida. La calibración de los movimientos debe realizarse en la función [move.py](https://github.com/queined/bfs-maze-bot/blob/main/esp32/modules/move.py)
 
 ## ⚙ Configuración de hardware
 ### Materiales
@@ -77,9 +77,16 @@ maze = [
 Coming soon...
 
 # Funcionamiento
-Work in progress...
+<p align="center">
+    <img src="https://i.postimg.cc/2j24f1gQ/dummies.png" width="500">
+</p>
+
+Si las casillas de "Fin" y "Laberinto" se dejan vacías, se utilizarán por defecto las coordenadas (0,4) como punto de salida y se empleará la matriz del ejemplo que representa el laberinto. Al ejecutar "Escanear laberinto", se abrirá una ventana en la que se debe tomar la captura y seleccionar las cuatro esquinas del laberinto en el orden indicado a continuación.
+<br>
+<p align="center">
+    <img src="https://i.postimg.cc/L41rCZ5s/robot.png" width="350">
+</p>
+Una vez que se hayan seleccionado las esquinas para ajustar la perspectiva, el procesamiento de imágenes detectará las coordenadas de inicio del robot. Al presionar "Enviar al robot", se enviará una solicitud JSON a través de HTTP que contendrá los datos de las coordenadas a la dirección IP asignada a la ESP32. Se asume que, por defecto, inicialmente el robot siempre debe apuntar hacia el norte.
 
 # Licencia
 Este proyecto tiene la licencia MIT; consulte el archivo de [LICENSE](https://github.com/queined/bfs-maze-bot/blob/main/LICENSE) para obtener más detalles.
- 
-
